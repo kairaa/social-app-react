@@ -4,7 +4,7 @@
   justify-content: space-between;
   align-items: stretch;
   gap: 2rem;
-  padding: 0 10rem;
+  padding: 0 20rem !important;
 }
 
 .site-title {
