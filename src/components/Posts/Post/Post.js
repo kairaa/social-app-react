@@ -7,7 +7,7 @@ export const Post = (props) => {
     <Card className="post">
       <div className="postDetails">
         <p className="userName">
-          <Link to="/register">{props.userName}</Link>
+          <Link to={"/users/" + props.id}>{props.userName}</Link>
         </p>
         <p className="date">{props.postDate}</p>
       </div>

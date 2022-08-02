@@ -1,8 +1,8 @@
 import { MyNavbar } from "./components/Navbar/MyNavbar";
 import { Route, Routes } from "react-router-dom";
-import { Home } from "./pages/Home";
-import { Login } from "./pages/Login";
-import { Register } from "./pages/Register";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+import UserPage from "./components/UserPage";
 import { Posts } from "./components/Posts/Post/Posts";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -16,6 +16,7 @@ function App() {
           <Route path="/" element={<Posts></Posts>} />
           <Route path="/login" element={<Login></Login>} />
           <Route path="/register" element={<Register></Register>} />
+          <Route path="/users/:id" element={<UserPage></UserPage>} />
         </Routes>
       </div>
     </>

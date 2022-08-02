@@ -1,4 +1,7 @@
 .container {
-  margin: 2rem auto;
-  padding: 0 15rem;
+  width: fit-content;
+}
+
+.container form {
+  width: 35rem;
 }
