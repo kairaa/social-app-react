@@ -1,10 +1,12 @@
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import "./Login.css";
-import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 const Register = () => {
+  const [isRegistered, setIsRegistered] = useState(false);
+  let navigate = useNavigate();
   async function sendRequest() {
     const requestOptions = {
       method: "POST",
@@ -13,7 +15,7 @@ const Register = () => {
         Accept: "application/json",
       },
       body: JSON.stringify({
-        userName: "kayra11",
+        userName: "kaira3",
         password: "Aa7waw37x.",
         firstName: "Kayra",
         lastName: "Çakıroğlu",
@@ -32,13 +34,22 @@ const Register = () => {
         .then((res) => {
           console.log("status code: " + res.status);
           if (res.status === 200) {
-            alert("Basarili bir sekilde kayit oldun!");
-            <Link to={"/login"}></Link>;
+            setIsRegistered(true);
+            console.log(isRegistered);
           } else {
-            alert("Biseler yanlis!");
+            setIsRegistered(false);
+            console.log(isRegistered);
           }
         })
     );
+
+    if (isRegistered) {
+      alert("Succesfull");
+      let path = `/login`;
+      navigate(path);
+    } else {
+      alert("Check your inputs again");
+    }
   }
 
   return (
