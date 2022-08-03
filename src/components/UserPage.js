@@ -14,8 +14,7 @@ const UserPage = () => {
     });
   }, []);
 
-  let posts = [];
-  posts = userPosts.posts;
+  let posts = userPosts.posts;
 
   let postItems = [];
   // console.log(posts);
@@ -33,7 +32,9 @@ const UserPage = () => {
     });
   }
 
-  return postItems.length === 0 ? (
+  return posts == undefined ? (
+    <p>User not found</p>
+  ) : postItems.length === 0 ? (
     <p>User {userPosts.userName} has no post!</p>
   ) : (
     <div>

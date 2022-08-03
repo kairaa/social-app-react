@@ -1,35 +1,10 @@
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import "./Login.css";
-import axios from "axios";
-import { useCallback, useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import { useState } from "react";
 
 const Register = () => {
-  const [res, setRes] = useState([]);
-
-  // let user = {
-  //   userName: "kayra5",
-  //   password: "Aa7waw37x.",
-  //   firstName: "Kayra",
-  //   lastName: "Çakıroğlu",
-  //   email: "user@example.com",
-  // };
-
-  // const sendRequest = useCallback(async () => {
-  //   if (isSending) return;
-  //   setIsSending(true);
-  //   await axios
-  //     .post("https://localhost:7139/api/account/register", user)
-  //     .then((result) => {
-  //       setRes(result.data);
-  //     });
-  //   setIsSending(false);
-  //   console.log(res);
-  //   console.log(typeof res);
-  //   console.log(res.data);
-  //   console.log(res.status);
-  // });
-
   async function sendRequest() {
     const requestOptions = {
       method: "POST",
@@ -38,35 +13,33 @@ const Register = () => {
         Accept: "application/json",
       },
       body: JSON.stringify({
-        userName: "kayra9",
+        userName: "kayra11",
         password: "Aa7waw37x.",
         firstName: "Kayra",
         lastName: "Çakıroğlu",
         email: "user@example.com",
       }),
     };
-    const response = await fetch(
+    await fetch(
       "https://localhost:7139/api/account/register",
       requestOptions
+    ).then((response) =>
+      response
+        .text()
+        .then((data) => ({
+          status: response.status,
+        }))
+        .then((res) => {
+          console.log("status code: " + res.status);
+          if (res.status === 200) {
+            alert("Basarili bir sekilde kayit oldun!");
+            <Link to={"/login"}></Link>;
+          } else {
+            alert("Biseler yanlis!");
+          }
+        })
     );
-    if (response.status == 400) {
-      console.log(
-        "bişeyler eksik!! kendine çeki düzen ver öyle kaydını yapalım, piç"
-      );
-    }
-    console.log(response);
   }
-
-  //DuplicateUserName
-  // const clickHandler = () => {
-  //   useEffect(() => {
-  //     axios
-  //       .post("https://localhost:7139/api/account/register", user)
-  //       .then((result) => {
-  //         setRes(result.data);
-  //       });
-  //   }, []);
-  // };
 
   return (
     <div className="container mt-5 mx-auto">
