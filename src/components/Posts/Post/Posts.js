@@ -1,9 +1,13 @@
 import { useEffect, useState } from "react";
 import PostService from "../../../services/postService";
+import AddPostForm from "../../AddPostForm";
 import { Post } from "./Post";
 import "./Posts.css";
+import jwtDecode from "jwt-decode";
 
 export const Posts = () => {
+  const token = localStorage.getItem("jwtToken");
+  const decode = token ? jwtDecode(token) : null;
   const [posts, setPosts] = useState([]);
   useEffect(() => {
     let postService = new PostService();
@@ -20,14 +24,20 @@ export const Posts = () => {
         title={post.title}
         context={post.context}
         userName={post.apiUser.userName}
-        postDate={new Date(post.postDate).toLocaleDateString()}
+        postDate={new Date(post.postDate).toLocaleString()}
       ></Post>
     );
   });
 
   console.log("home page: " + localStorage.getItem("jwtToken"));
 
-  return (
+  return token !== null ? (
+    <div className="newsfeed">
+      <AddPostForm></AddPostForm>
+      <h2 className="newsfeedTitle">Newsfeed</h2>
+      {postItems}
+    </div>
+  ) : (
     <div className="newsfeed">
       <h2 className="newsfeedTitle">Newsfeed</h2>
       {postItems}
