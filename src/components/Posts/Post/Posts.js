@@ -25,6 +25,8 @@ export const Posts = () => {
     );
   });
 
+  console.log("home page: " + localStorage.getItem("jwtToken"));
+
   return (
     <div className="newsfeed">
       <h2 className="newsfeedTitle">Newsfeed</h2>

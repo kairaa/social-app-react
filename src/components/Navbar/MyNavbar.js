@@ -2,7 +2,24 @@ import "./MyNavbar.css";
 import { Link, useMatch, useResolvedPath } from "react-router-dom";
 
 export const MyNavbar = () => {
-  return (
+  return localStorage.getItem("jwtToken") != undefined ? (
+    <nav className="nav">
+      <Link to="/" className="site-title">
+        Social App
+      </Link>
+      <ul>
+        <CustomLink
+          to="/"
+          onClick={() => {
+            localStorage.removeItem("jwtToken");
+            window.location.reload();
+          }}
+        >
+          Logout
+        </CustomLink>
+      </ul>
+    </nav>
+  ) : (
     <nav className="nav">
       <Link to="/" className="site-title">
         Social App

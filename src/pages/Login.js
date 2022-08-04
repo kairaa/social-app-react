@@ -6,8 +6,22 @@ import { useEffect, useState } from "react";
 const Login = () => {
   const [token, setToken] = useState("");
   const [userId, setUserId] = useState("");
+  const [userInput, setUserInput] = useState({
+    username: "",
+    password: "",
+  });
+
+  const handleChange = (e) => {
+    setUserInput({
+      ...userInput,
+      [e.target.name]: e.target.value,
+    });
+  };
+
   let navigate = useNavigate();
   async function sendRequest() {
+    console.log("username: " + userInput.username);
+    console.log("password: " + userInput.password);
     const requestOptions = {
       method: "POST",
       headers: {
@@ -15,8 +29,8 @@ const Login = () => {
         Accept: "application/json",
       },
       body: JSON.stringify({
-        userName: "kaira",
-        password: "Aa7waw37x.",
+        userName: userInput.username,
+        password: userInput.password,
       }),
     };
     await fetch(
@@ -34,22 +48,24 @@ const Login = () => {
           if (res.status === 200) {
             setToken(res.data.token);
             setUserId(res.data.userID);
+            localStorage.setItem("jwtToken", res.data.token);
           } else {
             setToken("");
             setUserId("");
           }
         })
     );
-    console.log("token: " + token);
-    console.log("user id: " + userId);
+    //console.log("local storage jwt: " + localStorage.getItem("jwtToken"));
 
-    // if (token) {
-    //   alert("Succesfull");
-    //   // let path = `/login`;
-    //   // navigate(path);
-    // } else {
-    //   alert("Check your inputs again");
-    // }
+    //bunun yerine localStorage.getItem("jwtToken") > 0 koyulabilir
+    if (token.length > 0) {
+      alert("Succesfull");
+      let path = `/`;
+      navigate(path);
+      window.location.reload();
+    } else {
+      alert("Check your inputs again");
+    }
   }
 
   return (
@@ -61,6 +77,7 @@ const Login = () => {
             type="text"
             placeholder="Enter your username"
             name="username"
+            onChange={handleChange}
           />
         </Form.Group>
         <Form.Group className="mb-3" controlId="formBasicPassword">
@@ -69,6 +86,7 @@ const Login = () => {
             type="password"
             placeholder="Password"
             name="password"
+            onChange={handleChange}
           />
         </Form.Group>
         <Button

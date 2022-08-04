@@ -6,8 +6,28 @@ import { useEffect, useState } from "react";
 
 const Register = () => {
   const [isRegistered, setIsRegistered] = useState(false);
+  const [userInput, setUserInput] = useState({
+    username: "",
+    firstname: "",
+    lastname: "",
+    email: "",
+    password: "",
+  });
+
+  const handleChange = (e) => {
+    setUserInput({
+      ...userInput,
+      [e.target.name]: e.target.value,
+    });
+  };
+
   let navigate = useNavigate();
   async function sendRequest() {
+    console.log("username: " + userInput.username);
+    console.log("password: " + userInput.password);
+    console.log("username: " + userInput.firstname);
+    console.log("password: " + userInput.lastname);
+    console.log("username: " + userInput.email);
     const requestOptions = {
       method: "POST",
       headers: {
@@ -15,11 +35,11 @@ const Register = () => {
         Accept: "application/json",
       },
       body: JSON.stringify({
-        userName: "kaira3",
-        password: "Aa7waw37x.",
-        firstName: "Kayra",
-        lastName: "Çakıroğlu",
-        email: "user@example.com",
+        userName: userInput.username,
+        firstName: userInput.lastname,
+        lastName: userInput.email,
+        email: userInput.email,
+        password: userInput.password,
       }),
     };
     await fetch(
@@ -37,6 +57,7 @@ const Register = () => {
             setIsRegistered(true);
             console.log(isRegistered);
           } else {
+            console.log(response.statusText);
             setIsRegistered(false);
             console.log(isRegistered);
           }
@@ -61,24 +82,28 @@ const Register = () => {
             type="text"
             placeholder="Enter your username"
             name="username"
+            onChange={handleChange}
           />
           <Form.Label>Firstname</Form.Label>
           <Form.Control
             type="text"
             placeholder="Enter your firstname"
             name="firstname"
+            onChange={handleChange}
           />
           <Form.Label>Lastname</Form.Label>
           <Form.Control
             type="text"
             placeholder="Enter your lastname"
             name="lastname"
+            onChange={handleChange}
           />
           <Form.Label>Email</Form.Label>
           <Form.Control
             type="email"
             placeholder="Enter your email"
             name="email"
+            onChange={handleChange}
           />
         </Form.Group>
         <Form.Group className="mb-3" controlId="formBasicPassword">
@@ -87,6 +112,7 @@ const Register = () => {
             type="password"
             placeholder="Password"
             name="password"
+            onChange={handleChange}
           />
         </Form.Group>
         <Button
