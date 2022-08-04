@@ -6,6 +6,8 @@ import UserPage from "./components/UserPage";
 import { Posts } from "./components/Posts/Post/Posts";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+import PrivateRoute from "./components/PrivateRoute";
+import Category from "./components/Category";
 
 function App() {
   return (
@@ -17,6 +19,11 @@ function App() {
           <Route path="/login" element={<Login></Login>} />
           <Route path="/register" element={<Register></Register>} />
           <Route path="/users/:id" element={<UserPage></UserPage>} />
+          <Route
+            path="/category"
+            element={<PrivateRoute path="category" component={Category} />}
+          />
+          {/* <PrivateRoute path="/category" component={Category} /> */}
         </Routes>
       </div>
     </>

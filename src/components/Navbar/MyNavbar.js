@@ -8,6 +8,7 @@ export const MyNavbar = () => {
         Social App
       </Link>
       <ul>
+        <CustomLink to="/category">Category</CustomLink>
         <CustomLink
           to="/"
           onClick={() => {
@@ -27,6 +28,7 @@ export const MyNavbar = () => {
       <ul>
         <CustomLink to="/register">Register</CustomLink>
         <CustomLink to="/login">Login</CustomLink>
+        <CustomLink to="/category">Category</CustomLink>
       </ul>
     </nav>
   );
