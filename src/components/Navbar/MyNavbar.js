@@ -1,13 +1,20 @@
 import "./MyNavbar.css";
 import { Link, useMatch, useResolvedPath } from "react-router-dom";
+import jwtDecode from "jwt-decode";
 
 export const MyNavbar = () => {
-  return localStorage.getItem("jwtToken") != undefined ? (
+  const token = localStorage.getItem("jwtToken");
+  const decode = token ? jwtDecode(token) : null;
+  if (token) {
+    console.log(jwtDecode(token));
+  }
+  return token != undefined ? (
     <nav className="nav">
       <Link to="/" className="site-title">
         Social App
       </Link>
       <ul>
+        <CustomLink to={"/users/" + decode.uid}>{decode.sub}</CustomLink>
         <CustomLink to="/category">Category</CustomLink>
         <CustomLink
           to="/"

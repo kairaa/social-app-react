@@ -3,6 +3,7 @@ import Form from "react-bootstrap/Form";
 import "./Login.css";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 const Register = () => {
   const [isRegistered, setIsRegistered] = useState(false);
@@ -123,6 +124,7 @@ const Register = () => {
           Submit
         </Button>
       </Form>
+      <Link to={"/login"}>Do you have an account?</Link>
     </div>
   );
 };

@@ -2,6 +2,7 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 const Login = () => {
   const [token, setToken] = useState("");
@@ -97,6 +98,7 @@ const Login = () => {
           Submit
         </Button>
       </Form>
+      <Link to={"/register"}>Don't you have an account?</Link>
     </div>
   );
 };
