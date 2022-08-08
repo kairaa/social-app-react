@@ -33,9 +33,9 @@ export const MyNavbar = () => {
         Social App
       </Link>
       <ul>
+        <CustomLink to="/categories">Category</CustomLink>
         <CustomLink to="/register">Register</CustomLink>
         <CustomLink to="/login">Login</CustomLink>
-        <CustomLink to="/category">Category</CustomLink>
       </ul>
     </nav>
   );
