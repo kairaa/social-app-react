@@ -8,6 +8,7 @@ import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import PrivateRoute from "./components/PrivateRoute";
 import Category from "./components/Category";
+import CategoryPage from "./components/CategoryPage";
 
 function App() {
   return (
@@ -20,8 +21,14 @@ function App() {
           <Route path="/register" element={<Register></Register>} />
           <Route path="/users/:id" element={<UserPage></UserPage>} />
           <Route
-            path="/category"
-            element={<PrivateRoute path="category" component={Category} />}
+            path="/categories"
+            element={<PrivateRoute path="categories" component={Category} />}
+          />
+          <Route
+            path="/categories/:id"
+            element={
+              <PrivateRoute path="categories/:id" component={CategoryPage} />
+            }
           />
           {/* <PrivateRoute path="/category" component={Category} /> */}
         </Routes>

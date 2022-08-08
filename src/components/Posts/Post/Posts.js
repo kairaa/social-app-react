@@ -29,7 +29,7 @@ export const Posts = () => {
     );
   });
 
-  console.log("home page: " + localStorage.getItem("jwtToken"));
+  // console.log("home page: " + localStorage.getItem("jwtToken"));
 
   return token !== null ? (
     <div className="newsfeed">

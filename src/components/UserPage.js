@@ -43,14 +43,6 @@ const UserPage = () => {
       <p>{postItems.length}</p>
     </div>
   );
-
-  // console.log(posts);
-  // return (
-  //   <div>
-  //     <p>{userPosts.userName}</p>
-  //     {/* <p>{userPosts.posts[0].title}</p> */}
-  //   </div>
-  // );
 };
 
 export default UserPage;

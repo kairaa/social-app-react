@@ -35,7 +35,7 @@ const AddPostForm = () => {
         context: userInput.context,
         postDate: new Date(),
         apiUserId: decode.uid,
-        categoryId: 1,
+        categoryId: 4,
       }),
     };
     await fetch("https://localhost:7139/api/posts", requestOptions).then(

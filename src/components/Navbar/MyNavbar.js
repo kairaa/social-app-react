@@ -15,7 +15,7 @@ export const MyNavbar = () => {
       </Link>
       <ul>
         <CustomLink to={"/users/" + decode.uid}>{decode.sub}</CustomLink>
-        <CustomLink to="/category">Category</CustomLink>
+        <CustomLink to="/categories">Category</CustomLink>
         <CustomLink
           to="/"
           onClick={() => {
