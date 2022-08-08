@@ -3,14 +3,39 @@ import TextField from "@mui/material/TextField";
 import { Box } from "@mui/system";
 import { useEffect, useState } from "react";
 import jwtDecode from "jwt-decode";
+import CategoryService from "../services/categoryService";
+import MenuItem from "@mui/material/MenuItem";
+import InputLabel from "@mui/material/InputLabel";
+import Select from "@mui/material/Select";
 
 const AddPostForm = () => {
   const token = localStorage.getItem("jwtToken");
+  const [categories, setCategories] = useState([]);
+  const [userCategory, setUserCategory] = useState("");
   const decode = token ? jwtDecode(token) : null;
+
   const [userInput, setUserInput] = useState({
     title: "",
     context: "",
   });
+
+  useEffect(() => {
+    let categoryService = new CategoryService();
+    categoryService.getAllCategories().then((result) => {
+      setCategories(result.data);
+    });
+  }, []);
+
+  let categoryItems = [];
+  categories.forEach((category) => {
+    categoryItems.push(
+      <MenuItem value={category.id}>{category.name}</MenuItem>
+    );
+  });
+
+  const handleSelect = (e) => {
+    setUserCategory(e.target.value);
+  };
 
   const handleChange = (e) => {
     setUserInput({
@@ -35,7 +60,7 @@ const AddPostForm = () => {
         context: userInput.context,
         postDate: new Date(),
         apiUserId: decode.uid,
-        categoryId: 4,
+        categoryId: userCategory,
       }),
     };
     await fetch("https://localhost:7139/api/posts", requestOptions).then(
@@ -85,6 +110,21 @@ const AddPostForm = () => {
         multiline
         rows={4}
       />
+      <br></br>
+      <InputLabel id="demo-simple-select-label">Category</InputLabel>
+      <Select
+        style={{
+          width: "150px",
+          margin: "10px auto",
+        }}
+        labelId="demo-simple-select-label"
+        id="demo-simple-select"
+        value={userCategory}
+        label="Category"
+        onChange={handleSelect}
+      >
+        {categoryItems}
+      </Select>
       <br></br>
       <Button variant="outlined" onClick={sendRequest}>
         Send Post!
