@@ -9,6 +9,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import PrivateRoute from "./components/PrivateRoute";
 import Category from "./components/Category";
 import CategoryPage from "./components/CategoryPage";
+import AdminUserPage from "./components/AdminUserPage";
+import AdminPage from "./components/AdminPage";
 
 function App() {
   return (
@@ -28,6 +30,16 @@ function App() {
             path="/categories/:id"
             element={
               <PrivateRoute path="categories/:id" component={CategoryPage} />
+            }
+          />
+          <Route
+            path="/admin"
+            element={<PrivateRoute path="admin" component={AdminPage} />}
+          />
+          <Route
+            path="/admin/users"
+            element={
+              <PrivateRoute path="admin/users" component={AdminUserPage} />
             }
           />
           {/* <PrivateRoute path="/category" component={Category} /> */}
