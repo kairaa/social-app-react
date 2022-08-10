@@ -21,6 +21,7 @@ export const Posts = () => {
     postItems.push(
       <Post
         id={post.apiUser.id}
+        postId={post.id}
         title={post.title}
         context={post.context}
         userName={post.apiUser.userName}

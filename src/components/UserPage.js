@@ -26,7 +26,7 @@ const UserPage = () => {
           title={post.title}
           context={post.context}
           userName={post.apiUser.userName}
-          postDate={new Date(post.postDate).toLocaleDateString()}
+          postDate={new Date(post.postDate).toLocaleString()}
         ></Post>
       );
     });
