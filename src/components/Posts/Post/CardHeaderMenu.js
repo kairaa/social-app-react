@@ -1,11 +1,11 @@
 import "./Post.css";
+import { Link } from "react-router-dom";
 import IconButton from "@mui/material/IconButton";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import PostService from "../../../services/postService";
 import { useEffect, useState } from "react";
-import UpdatePopUpForm from "./UpdatePopUpForm.";
 
 const CardHeaderMenu = (props) => {
   const [anchorEl, setAnchorEl] = useState(null);
@@ -43,10 +43,17 @@ const CardHeaderMenu = (props) => {
           onClick={() => {
             handleClose();
             console.log("clicked update");
-            <UpdatePopUpForm></UpdatePopUpForm>;
           }}
         >
-          Update Post
+          <Link
+            style={{
+              textDecoration: "none",
+              color: "inherit",
+            }}
+            to={"/posts/" + props.postId}
+          >
+            Update Post
+          </Link>
         </MenuItem>
         <MenuItem
           onClick={() => {

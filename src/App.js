@@ -11,6 +11,7 @@ import Category from "./components/Category";
 import CategoryPage from "./components/CategoryPage";
 import AdminUserPage from "./components/AdminUserPage";
 import AdminPage from "./components/AdminPage";
+import UpdatePostForm from "./components/Posts/Post/UpdatePostForm";
 
 function App() {
   return (
@@ -40,6 +41,12 @@ function App() {
             path="/admin/users"
             element={
               <PrivateRoute path="admin/users" component={AdminUserPage} />
+            }
+          />
+          <Route
+            path="/posts/:id"
+            element={
+              <PrivateRoute path="posts/:id" component={UpdatePostForm} />
             }
           />
           {/* <PrivateRoute path="/category" component={Category} /> */}

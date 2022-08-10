@@ -7,7 +7,7 @@ import jwtDecode from "jwt-decode";
 
 export const Posts = () => {
   const token = localStorage.getItem("jwtToken");
-  const decode = token ? jwtDecode(token) : null;
+  //const decode = token ? jwtDecode(token) : null;
   const [posts, setPosts] = useState([]);
   useEffect(() => {
     let postService = new PostService();

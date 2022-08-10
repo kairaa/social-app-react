@@ -32,7 +32,7 @@ const UserPage = () => {
     });
   }
 
-  return posts == undefined ? (
+  return posts === undefined ? (
     <p>User not found</p>
   ) : postItems.length === 0 ? (
     <p>User {userPosts.userName} has no post!</p>
