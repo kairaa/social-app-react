@@ -8,4 +8,13 @@ export default class AdminService {
       },
     });
   }
+
+  deleteCategory(id, token) {
+    console.log(id);
+    return axios.delete(`https://localhost:7139/api/categories/${id}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+  }
 }

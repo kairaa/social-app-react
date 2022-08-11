@@ -1,6 +1,6 @@
 import jwtDecode from "jwt-decode";
 import { useEffect, useState } from "react";
-import AdminService from "../services/adminService";
+import AdminService from "../../services/adminService";
 
 const AdminUserPage = () => {
   const token = localStorage.getItem("jwtToken");
@@ -32,7 +32,17 @@ const AdminUserPage = () => {
   // console.log(types.includes("Administrator"));
   // console.log(typeof types);
   //burayı düzenle
-  return !types.includes("Administrator") ? <p>sg</p> : <div>{userItems}</div>;
+  return !types.includes("Administrator") ? (
+    <p>sg</p>
+  ) : (
+    <div
+      style={{
+        marginLeft: "78px",
+      }}
+    >
+      {userItems}
+    </div>
+  );
 };
 
 export default AdminUserPage;

@@ -1,9 +1,10 @@
 import jwtDecode from "jwt-decode";
-import AdminUserPage from "./AdminUserPage";
-
+import AddCategory from "./Admin/AddCategory";
+import DeleteCategory from "./Admin/DeleteCategory";
+import AdminUserPage from "./Admin/AdminUserPage";
 const AdminPage = () => {
   const token = localStorage.getItem("jwtToken");
-  console.log(token);
+  //console.log(token);
   const decode = token ? jwtDecode(token) : null;
   const types = JSON.parse(
     window.atob(localStorage.getItem("jwtToken").split(".")[1])
@@ -11,7 +12,11 @@ const AdminPage = () => {
   return !types.includes("Administrator") ? (
     <p>sg</p>
   ) : (
-    <div>{<AdminUserPage></AdminUserPage>}</div>
+    <div>
+      <AdminUserPage></AdminUserPage>
+      <AddCategory></AddCategory>
+      <DeleteCategory></DeleteCategory>
+    </div>
   );
 };
 
