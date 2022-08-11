@@ -5,6 +5,9 @@ export default class PostService {
     return axios.get("https://localhost:7139/api/posts");
   }
 
+  getPostById(postId) {
+    return axios.get(`https://localhost:7139/api/posts/${postId}`);
+  }
   getUserDetails(apiUserId) {
     return axios.get(`https://localhost:7139/api/account/${apiUserId}`);
   }
