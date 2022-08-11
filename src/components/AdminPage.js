@@ -2,6 +2,7 @@ import jwtDecode from "jwt-decode";
 import AddCategory from "./Admin/AddCategory";
 import DeleteCategory from "./Admin/DeleteCategory";
 import AdminUserPage from "./Admin/AdminUserPage";
+import UpdateCategory from "./Admin/UpdateCategory";
 const AdminPage = () => {
   const token = localStorage.getItem("jwtToken");
   //console.log(token);
@@ -16,6 +17,7 @@ const AdminPage = () => {
       <AdminUserPage></AdminUserPage>
       <AddCategory></AddCategory>
       <DeleteCategory></DeleteCategory>
+      <UpdateCategory></UpdateCategory>
     </div>
   );
 };
