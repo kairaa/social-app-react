@@ -3,6 +3,7 @@ import AddCategory from "./Admin/AddCategory";
 import DeleteCategory from "./Admin/DeleteCategory";
 import AdminUserPage from "./Admin/AdminUserPage";
 import UpdateCategory from "./Admin/UpdateCategory";
+import { Box } from "@mui/system";
 const AdminPage = () => {
   const token = localStorage.getItem("jwtToken");
   //console.log(token);
@@ -15,8 +16,16 @@ const AdminPage = () => {
   ) : (
     <div>
       <AdminUserPage></AdminUserPage>
-      <AddCategory></AddCategory>
-      <DeleteCategory></DeleteCategory>
+      <Box
+        sx={{
+          display: "flex",
+          gap: "40px",
+          marginLeft: "78px",
+        }}
+      >
+        <AddCategory></AddCategory>
+        <DeleteCategory></DeleteCategory>
+      </Box>
       <UpdateCategory></UpdateCategory>
     </div>
   );
