@@ -57,10 +57,13 @@ const CardHeaderMenu = (props) => {
         </MenuItem>
         <MenuItem
           onClick={() => {
-            handleClose();
-            console.log("clicked delete");
-            postService.deletePost(props.postId);
-            window.location.reload();
+            let conf = window.confirm("Are you sure to delete this post!");
+            if (conf) {
+              handleClose();
+              console.log("clicked delete");
+              postService.deletePost(props.postId);
+              window.location.reload();
+            }
           }}
         >
           Delete Post

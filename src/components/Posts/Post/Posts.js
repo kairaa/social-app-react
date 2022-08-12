@@ -3,11 +3,9 @@ import PostService from "../../../services/postService";
 import AddPostForm from "../../AddPostForm";
 import { Post } from "./Post";
 import "./Posts.css";
-import jwtDecode from "jwt-decode";
 
 export const Posts = () => {
   const token = localStorage.getItem("jwtToken");
-  //const decode = token ? jwtDecode(token) : null;
   const [posts, setPosts] = useState([]);
   useEffect(() => {
     let postService = new PostService();
@@ -29,8 +27,6 @@ export const Posts = () => {
       ></Post>
     );
   });
-
-  // console.log("home page: " + localStorage.getItem("jwtToken"));
 
   return token !== null ? (
     <div className="newsfeed">

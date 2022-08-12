@@ -18,7 +18,6 @@ const UpdateCategory = () => {
   };
 
   async function sendRequest() {
-    console.log(adminInput);
     const requestOptions = {
       method: "PUT",
       headers: {

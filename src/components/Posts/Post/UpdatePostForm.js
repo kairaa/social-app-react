@@ -10,10 +10,6 @@ import { Box } from "@mui/system";
 import jwtDecode from "jwt-decode";
 
 const UpdatePostForm = () => {
-  //TODO : Sadece postu gönderen kullanıcının
-  // gönderiyi güncellemesine izin ver,
-  // başka kullanıcı linke erişmeye çalışırsa
-  // hata mesajı ver veya ana sayfaya yönlendir
   const token = localStorage.getItem("jwtToken");
   const decode = token ? jwtDecode(token) : null;
   const userId = token ? decode.uid : null;

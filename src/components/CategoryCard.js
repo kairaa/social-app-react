@@ -41,24 +41,6 @@ const CategoryCard = (props) => {
         </h4>
       </div>
     </Link>
-    // <div
-    //   style={{
-    //     margin: "10px auto",
-    //     padding: "5px 0",
-    //     border: "1px solid",
-    //     borderRadius: "20px",
-    //   }}
-    // >
-    //   <Link to={"/categories/" + props.id}>aaa</Link>;
-    //   <h4
-    //     style={{
-    //       marginLeft: "15px",
-    //       textDecoration: "none",
-    //     }}
-    //   >
-    //     {props.name}
-    //   </h4>
-    // </div>
   );
 };
 

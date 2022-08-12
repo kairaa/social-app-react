@@ -37,19 +37,12 @@ function App() {
             path="/admin"
             element={<PrivateRoute path="admin" component={AdminPage} />}
           />
-          {/* <Route
-            path="/admin/users"
-            element={
-              <PrivateRoute path="admin/users" component={AdminUserPage} />
-            }
-          /> */}
           <Route
             path="/posts/:id"
             element={
               <PrivateRoute path="posts/:id" component={UpdatePostForm} />
             }
           />
-          {/* <PrivateRoute path="/category" component={Category} /> */}
         </Routes>
       </div>
     </>

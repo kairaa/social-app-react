@@ -6,13 +6,11 @@ import UpdateCategory from "./Admin/UpdateCategory";
 import { Box } from "@mui/system";
 const AdminPage = () => {
   const token = localStorage.getItem("jwtToken");
-  //console.log(token);
-  const decode = token ? jwtDecode(token) : null;
   const types = JSON.parse(
     window.atob(localStorage.getItem("jwtToken").split(".")[1])
   )["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"];
   return !types.includes("Administrator") ? (
-    <p>sg</p>
+    <h1>403! You're not authorized user for this operation!</h1>
   ) : (
     <div>
       <AdminUserPage></AdminUserPage>
