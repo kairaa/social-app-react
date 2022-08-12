@@ -19,7 +19,17 @@ const Category = (props) => {
     );
   });
 
-  return <div>{categoryItems}</div>;
+  return (
+    <div
+      style={{
+        margin: "0 78px",
+        width: "980px",
+      }}
+    >
+      <h2>Categories</h2>
+      {categoryItems}
+    </div>
+  );
 };
 
 export default Category;

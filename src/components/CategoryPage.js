@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import PostService from "../services/postService";
 import { Post } from "./Posts/Post/Post";
 import { useParams } from "react-router-dom";
+import PostCard from "./Posts/Post/PostCard";
+import CardHeaderMenu from "./Posts/Post/CardHeaderMenu";
 
 const CategoryPage = () => {
   const params = useParams();
@@ -19,13 +21,14 @@ const CategoryPage = () => {
     if (post.categoryId == params.id) {
       title = post.category.name;
       postItems.push(
-        <Post
+        <PostCard
           id={post.apiUser.id}
+          postId={post.id}
           title={post.title}
           context={post.context}
           userName={post.apiUser.userName}
           postDate={new Date(post.postDate).toLocaleString()}
-        ></Post>
+        ></PostCard>
       );
     }
   });

@@ -40,6 +40,7 @@ const AdminUserPage = () => {
         marginLeft: "78px",
       }}
     >
+      <h2>All Users in the App</h2>
       {userItems}
     </div>
   );

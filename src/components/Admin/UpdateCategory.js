@@ -64,6 +64,8 @@ const UpdateCategory = () => {
         onChange={handleChange}
         sx={{
           width: 450,
+          marginBottom: "10px",
+          marginTop: "10px",
         }}
         id="outlined-textarea"
         label="Category Id"
@@ -75,6 +77,7 @@ const UpdateCategory = () => {
         onChange={handleChange}
         sx={{
           width: 450,
+          marginBottom: "10px",
         }}
         id="outlined-textarea"
         label=" New Category Name"

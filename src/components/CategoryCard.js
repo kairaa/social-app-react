@@ -8,14 +8,14 @@ const CategoryCard = (props) => {
         textDecoration: "none",
       }}
     >
-      <span
-        className="card"
+      <div
         style={{
           margin: "10px auto",
           padding: "10px 0",
           display: "flex",
           border: "1px solid black",
           borderRadius: "14px",
+          justifyContent: "space-between",
         }}
       >
         <h4
@@ -27,7 +27,19 @@ const CategoryCard = (props) => {
         >
           {props.name}
         </h4>
-      </span>
+        <h4
+          style={{
+            margin: 0,
+            padding: 0,
+            color: "black",
+            marginRight: "15px",
+            textDecoration: "none",
+            fontWeight: "bold",
+          }}
+        >
+          {">"}
+        </h4>
+      </div>
     </Link>
     // <div
     //   style={{
