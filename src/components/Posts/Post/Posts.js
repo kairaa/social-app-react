@@ -1,3 +1,4 @@
+import { Box } from "@mui/material";
 import { useEffect, useState } from "react";
 import PostService from "../../../services/postService";
 import AddPostForm from "../../AddPostForm";
@@ -29,15 +30,27 @@ export const Posts = () => {
   });
 
   return token !== null ? (
-    <div className="newsfeed">
+    <Box
+      sx={{
+        margin: "40px auto",
+      }}
+    >
       <AddPostForm></AddPostForm>
       <h2 className="newsfeedTitle">Newsfeed</h2>
       {postItems}
-    </div>
+    </Box>
   ) : (
-    <div className="newsfeed">
+    <Box
+      sx={{
+        margin: "40px auto",
+        width: "fit-content",
+      }}
+    >
       <h2 className="newsfeedTitle">Newsfeed</h2>
       {postItems}
-    </div>
+    </Box>
   );
 };
+
+/*
+ */

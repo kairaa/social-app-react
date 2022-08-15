@@ -1,9 +1,19 @@
-import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import "./Login.css";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { TextField } from "@mui/material";
+import { Box } from "@mui/system";
+import InputLabel from "@mui/material/InputLabel";
+import IconButton from "@mui/material/IconButton";
+import Input from "@mui/material/Input";
+import FilledInput from "@mui/material/FilledInput";
+import OutlinedInput from "@mui/material/OutlinedInput";
+import InputAdornment from "@mui/material/InputAdornment";
+import Visibility from "@mui/icons-material/Visibility";
+import VisibilityOff from "@mui/icons-material/VisibilityOff";
+import { Button } from "@mui/material";
 
 const Register = () => {
   const [isRegistered, setIsRegistered] = useState(false);
@@ -20,6 +30,13 @@ const Register = () => {
     setUserInput({
       ...userInput,
       [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleClickShowPassword = () => {
+    setUserInput({
+      ...userInput,
+      showPassword: !userInput.showPassword,
     });
   };
 
@@ -77,6 +94,62 @@ const Register = () => {
   }
 
   return (
+    <Box
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        width: "450px",
+        margin: "40px auto",
+        gap: "20px",
+      }}
+    >
+      <h2>Register!</h2>
+      <TextField
+        name="username"
+        label="username"
+        onChange={handleChange}
+      ></TextField>
+      <TextField
+        name="firstname"
+        label="firstname"
+        onChange={handleChange}
+      ></TextField>
+      <TextField
+        name="lastname"
+        label="lastname"
+        onChange={handleChange}
+      ></TextField>
+      <TextField name="email" label="email" onChange={handleChange}></TextField>
+      <OutlinedInput
+        type={userInput.showPassword ? "text" : "password"}
+        value={userInput.password}
+        name="password"
+        label="Password"
+        onChange={handleChange}
+        endAdornment={
+          <InputAdornment position="end">
+            <IconButton
+              aria-label="toggle password visibility"
+              onClick={handleClickShowPassword}
+              edge="end"
+            >
+              {userInput.showPassword ? <VisibilityOff /> : <Visibility />}
+            </IconButton>
+          </InputAdornment>
+        }
+      />
+      <Button variant="outlined" onClick={sendRequest}>
+        Register!
+      </Button>
+      <Link to={"/register"}>Do you have an account?</Link>
+    </Box>
+  );
+};
+
+export default Register;
+
+/*
+(
     <div className="container mt-5 mx-auto">
       <Form>
         <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -129,6 +202,4 @@ const Register = () => {
       <Link to={"/login"}>Do you have an account?</Link>
     </div>
   );
-};
-
-export default Register;
+*/

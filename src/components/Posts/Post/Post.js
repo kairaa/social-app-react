@@ -7,8 +7,6 @@ export const Post = (props) => {
   const decode = token ? jwtDecode(token) : null;
   let activeUserId = token ? decode.uid : null;
 
-  console.log(props.context + " : " + props.postDate);
-
   return activeUserId == props.id ? (
     <PostCard
       action={<CardHeaderMenu postId={props.postId}></CardHeaderMenu>}
