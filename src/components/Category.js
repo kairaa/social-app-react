@@ -10,7 +10,6 @@ const Category = (props) => {
       setCategories(result.data);
     });
   }, []);
-  console.log(categories);
 
   let categoryItems = [];
   categories.forEach((category) => {

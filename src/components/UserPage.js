@@ -4,6 +4,7 @@ import { Post } from "./Posts/Post/Post";
 import { useParams } from "react-router-dom";
 import PostCard from "./Posts/Post/PostCard";
 import CardHeaderMenu from "./Posts/Post/CardHeaderMenu";
+import NotFoundErrorPage from "../pages/ErrorPages/NotFoundErrorPage";
 
 const UserPage = () => {
   const params = useParams();
@@ -36,7 +37,7 @@ const UserPage = () => {
   }
 
   return posts === undefined ? (
-    <p>User not found</p>
+    <NotFoundErrorPage></NotFoundErrorPage>
   ) : postItems.length === 0 ? (
     <p>User {userPosts.userName} has no post!</p>
   ) : (
