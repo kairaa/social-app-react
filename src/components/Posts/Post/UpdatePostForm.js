@@ -1,15 +1,13 @@
 import { useState, useEffect } from "react";
-import { Link, useParams, Navigate } from "react-router-dom";
+import { useParams, Navigate, useNavigate } from "react-router-dom";
 import PostService from "../../../services/postService";
-import MenuItem from "@mui/material/MenuItem";
-import InputLabel from "@mui/material/InputLabel";
-import Select from "@mui/material/Select";
-import { Button, Paper } from "@mui/material";
+import { Button } from "@mui/material";
 import TextField from "@mui/material/TextField";
 import { Box } from "@mui/system";
 import jwtDecode from "jwt-decode";
 
 const UpdatePostForm = () => {
+  const navigate = useNavigate();
   const token = localStorage.getItem("jwtToken");
   const decode = token ? jwtDecode(token) : null;
   const userId = token ? decode.uid : null;
@@ -106,7 +104,13 @@ const UpdatePostForm = () => {
       />
       <br></br>
       <br></br>
-      <Button variant="outlined" onClick={sendRequest}>
+      <Button
+        variant="outlined"
+        onClick={() => {
+          sendRequest();
+          navigate("/");
+        }}
+      >
         Update Post!
       </Button>
     </Box>

@@ -7,6 +7,8 @@ export const Post = (props) => {
   const decode = token ? jwtDecode(token) : null;
   let activeUserId = token ? decode.uid : null;
 
+  console.log(props.context + " : " + props.postDate);
+
   return activeUserId == props.id ? (
     <PostCard
       action={<CardHeaderMenu postId={props.postId}></CardHeaderMenu>}
@@ -15,7 +17,7 @@ export const Post = (props) => {
       title={props.title}
       context={props.context}
       userName={props.userName}
-      postDate={new Date(props.postDate).toLocaleString()}
+      postDate={props.postDate}
     ></PostCard>
   ) : (
     <PostCard
@@ -24,7 +26,7 @@ export const Post = (props) => {
       title={props.title}
       context={props.context}
       userName={props.userName}
-      postDate={new Date(props.postDate).toLocaleString()}
+      postDate={props.postDate}
     ></PostCard>
   );
 };

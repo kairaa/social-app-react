@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 const Login = () => {
   const [token, setToken] = useState("");
   const [userId, setUserId] = useState("");
+  let isSuccesfull = false;
   const [userInput, setUserInput] = useState({
     username: "",
     password: "",
@@ -49,17 +50,19 @@ const Login = () => {
           if (res.status === 200) {
             setToken(res.data.token);
             setUserId(res.data.userID);
+            isSuccesfull = true;
             localStorage.setItem("jwtToken", res.data.token);
           } else {
             setToken("");
             setUserId("");
+            isSuccesfull = false;
           }
         })
     );
     //console.log("local storage jwt: " + localStorage.getItem("jwtToken"));
 
     //bunun yerine localStorage.getItem("jwtToken") > 0 koyulabilir
-    if (token.length > 0) {
+    if (isSuccesfull) {
       alert("Succesfull");
       let path = `/`;
       navigate(path);

@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 
 const Register = () => {
   const [isRegistered, setIsRegistered] = useState(false);
+  let isSuccesfull = false;
   const [userInput, setUserInput] = useState({
     username: "",
     firstname: "",
@@ -56,6 +57,7 @@ const Register = () => {
           console.log("status code: " + res.status);
           if (res.status === 200) {
             setIsRegistered(true);
+            isSuccesfull = true;
             console.log(isRegistered);
           } else {
             console.log(response.statusText);
@@ -65,7 +67,7 @@ const Register = () => {
         })
     );
 
-    if (isRegistered) {
+    if (isSuccesfull) {
       alert("Succesfull");
       let path = `/login`;
       navigate(path);
