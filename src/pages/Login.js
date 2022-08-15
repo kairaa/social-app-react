@@ -9,8 +9,11 @@ import InputAdornment from "@mui/material/InputAdornment";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import { Button } from "@mui/material";
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
 
 const Login = () => {
+  const MySwal = withReactContent(Swal);
   const [token, setToken] = useState("");
   const [userId, setUserId] = useState("");
   let isSuccesfull = false;
@@ -77,12 +80,19 @@ const Login = () => {
 
     //bunun yerine localStorage.getItem("jwtToken") > 0 koyulabilir
     if (isSuccesfull) {
-      alert("Succesfull");
-      let path = `/`;
-      navigate(path);
-      window.location.reload();
+      MySwal.fire({
+        title: <p>Succesfully Logged In!</p>,
+        icon: "success",
+      }).then(() => {
+        let path = "/";
+        navigate(path);
+        window.location.reload();
+      });
     } else {
-      alert("Check your inputs again");
+      MySwal.fire({
+        title: <p>Check your Inputs Again!</p>,
+        icon: "error",
+      });
     }
     console.log(userInput);
   }

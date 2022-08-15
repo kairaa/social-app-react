@@ -81,10 +81,9 @@ const AddPostForm = () => {
   return (
     <Box
       sx={{
-        display: "block",
-        margin: "0 auto",
         paddingBottom: "2rem",
-        width: 1140,
+        width: "1200px",
+        margin: "0 0 0 80px",
       }}
     >
       <h2>Send a Post!</h2>

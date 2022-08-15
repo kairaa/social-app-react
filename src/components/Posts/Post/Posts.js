@@ -33,6 +33,7 @@ export const Posts = () => {
     <Box
       sx={{
         margin: "40px auto",
+        width: "fit-content",
       }}
     >
       <AddPostForm></AddPostForm>

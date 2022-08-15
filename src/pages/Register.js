@@ -9,8 +9,11 @@ import InputAdornment from "@mui/material/InputAdornment";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import { Button } from "@mui/material";
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
 
 const Register = () => {
+  const MySwal = withReactContent(Swal);
   const [isRegistered, setIsRegistered] = useState(false);
   let isSuccesfull = false;
   const [userInput, setUserInput] = useState({
@@ -84,11 +87,19 @@ const Register = () => {
     );
 
     if (isSuccesfull) {
-      alert("Succesfull");
-      let path = `/login`;
-      navigate(path);
+      MySwal.fire({
+        title: <p>Succesfully Registered!</p>,
+        icon: "success",
+      }).then(() => {
+        let path = "/";
+        navigate(path);
+        window.location.reload();
+      });
     } else {
-      alert("Check your inputs again");
+      MySwal.fire({
+        title: <p>Check your Inputs Again!</p>,
+        icon: "error",
+      });
     }
   }
 
