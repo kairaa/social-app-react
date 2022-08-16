@@ -5,6 +5,7 @@ import { Button } from "@mui/material";
 import TextField from "@mui/material/TextField";
 import { Box } from "@mui/system";
 import jwtDecode from "jwt-decode";
+import NotFoundErrorPage from "../../../pages/ErrorPages/NotFoundErrorPage";
 
 const UpdatePostForm = () => {
   const navigate = useNavigate();
@@ -21,11 +22,7 @@ const UpdatePostForm = () => {
     });
   }, []);
   if (post.length === 0) {
-    return (
-      <div>
-        <p>404! No post found for this id</p>
-      </div>
-    );
+    return <NotFoundErrorPage></NotFoundErrorPage>;
   }
   if (post.apiUserId !== decode.uid) {
     return <Navigate to="/"></Navigate>;

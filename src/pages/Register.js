@@ -44,11 +44,6 @@ const Register = () => {
 
   let navigate = useNavigate();
   async function sendRequest() {
-    console.log("username: " + userInput.username);
-    console.log("password: " + userInput.password);
-    console.log("username: " + userInput.firstname);
-    console.log("password: " + userInput.lastname);
-    console.log("username: " + userInput.email);
     const requestOptions = {
       method: "POST",
       headers: {
