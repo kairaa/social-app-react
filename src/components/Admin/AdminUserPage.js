@@ -63,6 +63,7 @@ const AdminUserPage = () => {
   ) : (
     <div
       style={{
+        margin: "20px 0",
         marginLeft: "78px",
       }}
     >

@@ -21,11 +21,11 @@ const Category = (props) => {
   return (
     <div
       style={{
-        margin: "0 78px",
+        margin: "40px auto",
         width: "980px",
       }}
     >
-      <h2>Categories</h2>
+      <h2 style={{ marginBottom: "20px" }}>Categories</h2>
       {categoryItems}
     </div>
   );

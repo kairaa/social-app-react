@@ -70,7 +70,7 @@ const UpdatePostForm = () => {
     <Box
       sx={{
         display: "block",
-        margin: "0 auto",
+        margin: "40px auto",
         paddingBottom: "2rem",
         width: 1140,
       }}

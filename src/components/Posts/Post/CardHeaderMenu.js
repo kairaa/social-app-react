@@ -6,8 +6,11 @@ import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import PostService from "../../../services/postService";
 import { useEffect, useState } from "react";
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
 
 const CardHeaderMenu = (props) => {
+  const MySwal = withReactContent(Swal);
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -57,13 +60,31 @@ const CardHeaderMenu = (props) => {
         </MenuItem>
         <MenuItem
           onClick={() => {
-            let conf = window.confirm("Are you sure to delete this post!");
-            if (conf) {
-              handleClose();
-              console.log("clicked delete");
-              postService.deletePost(props.postId);
-              window.location.reload();
-            }
+            // let conf = window.confirm("Are you sure to delete this post!");
+            // if (conf) {
+            //   handleClose();
+            //   console.log("clicked delete");
+            //   postService.deletePost(props.postId);
+            //   window.location.reload();
+            // }
+            MySwal.fire({
+              title: "Are you sure?",
+              text: "You won't be able to revert this!",
+              icon: "warning",
+              showCancelButton: true,
+              confirmButtonColor: "#3085d6",
+              cancelButtonColor: "#d33",
+              confirmButtonText: "Yes, delete it!",
+            }).then((result) => {
+              if (result.isConfirmed) {
+                postService.deletePost(props.postId);
+                MySwal.fire(
+                  "Deleted!",
+                  "Your file has been deleted.",
+                  "success"
+                ).then(window.location.reload());
+              }
+            });
           }}
         >
           Delete Post

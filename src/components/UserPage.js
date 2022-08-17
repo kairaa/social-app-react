@@ -6,6 +6,8 @@ import PostCard from "./Posts/Post/PostCard";
 import CardHeaderMenu from "./Posts/Post/CardHeaderMenu";
 import NotFoundErrorPage from "../pages/ErrorPages/NotFoundErrorPage";
 import jwtDecode from "jwt-decode";
+import { Avatar, Box } from "@mui/material";
+import { red } from "@mui/material/colors";
 
 const UserPage = () => {
   const token = localStorage.getItem("jwtToken");
@@ -57,9 +59,62 @@ const UserPage = () => {
     <p>User {userPosts.userName} has no post!</p>
   ) : (
     <div>
-      <h2 className="newsfeedTitle">{userPosts.userName}</h2>
-      {postItems}
-      <p>{postItems.length}</p>
+      {/* <h2 className="newsfeedTitle">{userPosts.userName}</h2> */}
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          width: "fit-content",
+          margin: "40px auto",
+          alignItems: "center",
+          gap: "15px",
+        }}
+      >
+        <Avatar
+          // sx={{ bgcolor: red[500] }}
+          src="https://pbs.twimg.com/media/Efpe1GYX0AYHuoL.jpg:large"
+          ss
+          style={{
+            width: "120px",
+            height: "120px",
+          }}
+          aria-label="recipe"
+        >
+          {userPosts.userName.substring(0, 1)}
+        </Avatar>
+        <h4
+          style={{
+            margin: "0",
+            padding: "0",
+          }}
+        >
+          {userPosts.userName}
+        </h4>
+        <h5
+          style={{
+            margin: "0",
+            padding: "0",
+          }}
+        >
+          {userPosts.firstName} {userPosts.lastName}
+        </h5>
+        <p
+          style={{
+            margin: "0",
+            padding: "0",
+          }}
+        >
+          {userPosts.email}
+        </p>
+      </Box>
+      <Box
+        sx={{
+          width: "fit-content",
+          margin: "0 auto",
+        }}
+      >
+        {postItems.reverse()}
+      </Box>
     </div>
   );
 };

@@ -83,7 +83,7 @@ const AddPostForm = () => {
       sx={{
         paddingBottom: "2rem",
         width: "1200px",
-        margin: "0 0 0 80px",
+        margin: "0 0 0 0",
       }}
     >
       <h2>Send a Post!</h2>

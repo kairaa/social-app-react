@@ -2,6 +2,7 @@ import { Box } from "@mui/material";
 import { useEffect, useState } from "react";
 import PostService from "../../../services/postService";
 import AddPostForm from "../../AddPostForm";
+import TopThreeUserPage from "../../TopThreeUserPage";
 import { Post } from "./Post";
 import "./Posts.css";
 
@@ -33,12 +34,16 @@ export const Posts = () => {
     <Box
       sx={{
         margin: "40px auto",
-        width: "fit-content",
       }}
     >
       <AddPostForm></AddPostForm>
-      <h2 className="newsfeedTitle">Newsfeed</h2>
-      {postItems}
+      <div style={{ display: "flex", gap: "80px", margin: "0 auto" }}>
+        <Box sx={{ display: "flex", flexDirection: "column" }}>
+          <h2 className="newsfeedTitle">Newsfeed</h2>
+          {postItems}
+        </Box>
+        <TopThreeUserPage></TopThreeUserPage>
+      </div>
     </Box>
   ) : (
     <Box

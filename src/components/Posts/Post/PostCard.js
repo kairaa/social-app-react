@@ -12,9 +12,7 @@ import CardHeaderMenu from "./CardHeaderMenu";
 const PostCard = (props) => {
   let username = props.userName;
   return (
-    <Card
-      sx={{ width: "975px", margin: "20px 0 20px 75px", border: "1px solid" }}
-    >
+    <Card sx={{ width: "975px", margin: "20px 0", border: "1px solid" }}>
       <CardHeader
         avatar={
           <Avatar

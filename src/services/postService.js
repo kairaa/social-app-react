@@ -15,4 +15,8 @@ export default class PostService {
   deletePost(postId) {
     return axios.delete(`https://localhost:7139/api/posts/${postId}`);
   }
+
+  getTopThreeUser() {
+    return axios.get("https://localhost:7139/api/account/topThree");
+  }
 }
